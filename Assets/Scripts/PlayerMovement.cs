@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Input References")]
     public InputActionReference moveAction;
-    public InputActionReference jumpAction;
 
     private Rigidbody rb;
     private Vector2 moveInput;
@@ -24,24 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnEnable()
-    {
-        moveAction.action.Enable();
-        jumpAction.action.Enable();
-
-        // Subscribe to the jump button press
-        jumpAction.action.performed += OnJump;
-    }
-
-    private void OnDisable()
-    {
-        moveAction.action.Disable();
-        jumpAction.action.Disable();
-
-        // Unsubscribe to prevent memory leaks
-        jumpAction.action.performed -= OnJump;
     }
 
     private void Update()
@@ -67,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = targetVelocity;
     }
 
-    private void OnJump(InputAction.CallbackContext context)
+    private void OnJump()
     {
         if (isGrounded)
         {
