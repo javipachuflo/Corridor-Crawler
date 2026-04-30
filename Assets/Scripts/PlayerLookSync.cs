@@ -1,10 +1,14 @@
 using UnityEngine;
 
+// This ensures we always have a Rigidbody to reference
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerLookSync : MonoBehaviour
 {
     [Header("References")]
     [Tooltip("Drag your Main Camera here, NOT the Cinemachine Camera")]
     public Transform mainCameraTransform;
+
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -14,15 +18,18 @@ public class PlayerLookSync : MonoBehaviour
             mainCameraTransform = Camera.main.transform;
         }
 
-        // Lock the cursor to the center of the screen and hide it
+        rb = GetComponent<Rigidbody>();
+
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Only rotate the player's Y axis (left and right) to match the camera.
-        // We do not want the player capsule leaning forward or backward!
-        transform.rotation = Quaternion.Euler(0f, mainCameraTransform.eulerAngles.y, 0f);
+        // 1. Calculate the target rotation based on the camera's Y axis
+        Quaternion targetRotation = Quaternion.Euler(0f, mainCameraTransform.eulerAngles.y, 0f);
+
+        // 2. Apply it using MoveRotation. This plays perfectly with Rigidbody Interpolation!
+        rb.MoveRotation(targetRotation);
     }
 }
