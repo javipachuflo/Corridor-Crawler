@@ -2897,6 +2897,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8003416420661267862}
     m_Modifications:
+    - target: {fileID: 710496848161203535, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2634719889062358018, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
       propertyPath: m_Name
       value: Lever
@@ -2971,6 +2975,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448551609947633336, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999773531692577622, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7388664549666799590, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
