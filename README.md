@@ -12,3 +12,5 @@ A game about getting to the end of a corridor
  * A title screen
  * A tutorial scene (Tutorial itself not done yet)
  * Ability to pause game anytime and return to Title Screen
+ * Money System
+ * SFX: check commits on: 2nd of May 2026.
