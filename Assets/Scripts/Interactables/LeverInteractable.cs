@@ -6,29 +6,46 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 {
 
     [SerializeField] private string promptMessage = "Pull Lever";
-    [SerializeField] private Animator animator;
-    [SerializeField] Transform trapdoorTransform;
-    [SerializeField] Transform trapdoorStartPosition;
-    [SerializeField] Transform trapdoorEndPosition;
 
+    [SerializeField] private int requiredMoney = 500; // can be changed in the inspector
+
+    [SerializeField] private Animator animator;
     [SerializeField] private float trapdoorMovementDuration = 5f;
     [SerializeField] private AnimationCurve animationCurve;
 
+    [SerializeField] Transform trapdoorTransform;
+    [SerializeField] Transform trapdoorStartPosition;
+    [SerializeField] Transform trapdoorEndPosition;
+    [SerializeField] AudioSource trapdoorStoneSliding;
+
+    [SerializeField] private AudioSource pullingLeverAudio;
+    [SerializeField] private AudioSource boughtSomethingSound;
+
     public void Interact()
     {
-        setLayerMask("Default");
-
-        Debug.Log("Interacted with " + promptMessage);
-        if (animator != null)
+        if (MoneyManager.Instance.SpendMoney(requiredMoney))
         {
-            animator.SetTrigger("OnPull");
-        }
-        else
-        {
-            Debug.Log("Animator Component is Missing!");
-        }
+            setLayerMask("Default");
 
-        StartCoroutine(MoveTrapdoor());
+            Debug.Log("Interacted with " + promptMessage);
+            if (animator != null)
+            {
+                animator.SetTrigger("OnPull");
+                pullingLeverAudio.Play();
+                boughtSomethingSound.Play();
+                trapdoorStoneSliding.Play();
+            }
+            else
+            {
+                Debug.Log("Animator Component is Missing!");
+            }
+
+            StartCoroutine(MoveTrapdoor());
+
+        } else
+        {
+            Debug.Log("Not enough money!");
+        }
     }
 
     private IEnumerator MoveTrapdoor()

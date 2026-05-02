@@ -2910,6 +2910,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6878162417905696331}
     - target: {fileID: 3408466614546045975, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
+      propertyPath: requiredMoney
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408466614546045975, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
       propertyPath: trapdoorTransform
       value: 
       objectReference: {fileID: 5965939614009932672}
@@ -2917,6 +2921,10 @@ PrefabInstance:
       propertyPath: trapdoorEndPosition
       value: 
       objectReference: {fileID: 5046194204624408835}
+    - target: {fileID: 3408466614546045975, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
+      propertyPath: trapdoorStoneSliding
+      value: 
+      objectReference: {fileID: 7914701961440858526}
     - target: {fileID: 3408466614546045975, guid: bdfad04ca9a82864fb82e5d4dff97441, type: 3}
       propertyPath: trapdoorStartPosition
       value: 
@@ -3041,6 +3049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8003416420661267862}
     m_Modifications:
+    - target: {fileID: 5960221900611186800, guid: a23e8dd94d8e7f5439585f2bd2f66c7e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6328995528613695276, guid: a23e8dd94d8e7f5439585f2bd2f66c7e, type: 3}
       propertyPath: m_Name
       value: TrapdoorSystem
@@ -3112,5 +3124,10 @@ Transform:
 --- !u!4 &7041348145620525065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6834134822818595303, guid: a23e8dd94d8e7f5439585f2bd2f66c7e, type: 3}
+  m_PrefabInstance: {fileID: 4566753090407752174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7914701961440858526 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5960221900611186800, guid: a23e8dd94d8e7f5439585f2bd2f66c7e, type: 3}
   m_PrefabInstance: {fileID: 4566753090407752174}
   m_PrefabAsset: {fileID: 0}

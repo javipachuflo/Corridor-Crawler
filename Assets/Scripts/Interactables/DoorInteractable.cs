@@ -13,8 +13,11 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     [SerializeField] Transform doorStartPosition;
     [SerializeField] Transform doorEndPosition;
 
-    [SerializeField] private float trapdoorMovementDuration = 2f;
+    [SerializeField] private float doorMovementDuration = 2f;
     [SerializeField] private AnimationCurve animationCurve;
+
+    [SerializeField] AudioSource woodenSlidingDoorOpeningAudio;
+    [SerializeField] AudioSource woodenSlidingDoorClosingAudio;
 
     public void Interact()
     {
@@ -33,9 +36,18 @@ public class DoorInteractable : MonoBehaviour, IInteractable
         setLayerMask("Default");
         float timeElapsed = 0f;
 
-        while (timeElapsed < trapdoorMovementDuration)
+        if (!isOpen)
         {
-            float t = timeElapsed / trapdoorMovementDuration;
+            woodenSlidingDoorOpeningAudio.Play();
+        }
+        else
+        {
+            woodenSlidingDoorClosingAudio.Play();
+        }
+
+        while (timeElapsed < doorMovementDuration)
+        {
+            float t = timeElapsed / doorMovementDuration;
             if (!isOpen) // animation to open the door if it isn't already open
             {
                 doorTransform.position = Vector3.Lerp(doorStartPosition.position, doorEndPosition.position, animationCurve.Evaluate(t));
@@ -43,7 +55,6 @@ public class DoorInteractable : MonoBehaviour, IInteractable
             } else if (isOpen) // animation to close door is it is open
             {
                 doorTransform.position = Vector3.Lerp(doorEndPosition.position, doorStartPosition.position, animationCurve.Evaluate(t));
-
             }
             timeElapsed += Time.deltaTime;
             yield return null;
