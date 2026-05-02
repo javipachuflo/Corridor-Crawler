@@ -25,9 +25,6 @@ public class MoneyManager : MonoBehaviour
         }
 
         Instance = this;
-
-        // Optional: Keep this object alive when loading new scenes
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
