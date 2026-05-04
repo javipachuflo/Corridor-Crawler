@@ -283,7 +283,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   readTheTutorialPrompt: {fileID: 6111673074922109354}
-  freezeTimeOnNewSlide: 3
+  freezeTimeOnNewSlide: 0.5
 --- !u!1 &511550315974009468
 GameObject:
   m_ObjectHideFlags: 0
