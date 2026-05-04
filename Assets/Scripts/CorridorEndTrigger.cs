@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CorridorEndTrigger : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class CorridorEndTrigger : MonoBehaviour
             }
             else
             {
-                Debug.LogError("CorridorGenerator instance not found in the scene!");
+                SceneManager.LoadScene("Title Screen");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }

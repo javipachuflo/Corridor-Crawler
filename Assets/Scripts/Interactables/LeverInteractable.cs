@@ -4,10 +4,9 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsLayers;
 
 public class LeverInteractable : MonoBehaviour, IInteractable
 {
-
     [SerializeField] private string promptMessage = "Pull Lever";
 
-    [SerializeField] private int baseMoneyCost = 50;
+    [SerializeField] private int baseMoneyCost = 25;
     [SerializeField] private int costIncreasePerCorridor = 25;
 
     [SerializeField] private Animator animator;
@@ -22,10 +21,23 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource pullingLeverAudio;
     [SerializeField] private AudioSource boughtSomethingSound;
 
+    private int CalculateCost()
+    {
+        int currentMultiplier = 1; // Default for the tutorial
+
+        // Safely check if we are in the main game with a generator
+        if (CorridorGenerator.Instance != null)
+        {
+            currentMultiplier = CorridorGenerator.Instance.corridorLength;
+        }
+
+        return baseMoneyCost + (currentMultiplier * costIncreasePerCorridor);
+    }
+
     public void Interact()
     {
-        // 1. Calculate the current required money based on the generator's current length
-        int currentRequiredMoney = baseMoneyCost + (CorridorGenerator.Instance.corridorLength * costIncreasePerCorridor);
+        int currentRequiredMoney = CalculateCost();
+
         if (MoneyManager.Instance.SpendMoney(currentRequiredMoney))
         {
             setLayerMask("Default");
@@ -71,8 +83,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        int currentRequiredMoney = baseMoneyCost + (CorridorGenerator.Instance.corridorLength * costIncreasePerCorridor);
-        return "[Cost: " + currentRequiredMoney + "] "+ promptMessage;
+        return "[Cost: " + CalculateCost() + "] \n"+ promptMessage;
     }
 
     public Transform GetTransform()
