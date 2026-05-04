@@ -2,7 +2,7 @@
 A game about getting to the end of a corridor
 
 ### So far we have...
- * A randomly generated corridor with rooms to the left and right
+ * A precedurally generated corridor with rooms to the left and right
  * Character and camera movement
  * Custom-made objects which the player can interact with, including:
        * Diamonds
@@ -20,3 +20,8 @@ A game about getting to the end of a corridor
  * Custom UI
  * Tutorial
  * Music variety (for title screen and in-game)
+ * Custom Lighting
+ * Post Processing
+ * Infinite gameplay loop (finish corridor, get a longer one)
+ * Audio Settings
+ * Custom Skybox
