@@ -46,8 +46,6 @@ public class PlayerMovement : MonoBehaviour
         // 2. Read the Vector2 input from WASD continuously
         moveInput = moveAction.action.ReadValue<Vector2>();
 
-        Debug.Log("Input is: " + moveInput);
-
         HandleFootsteps();
     }
 

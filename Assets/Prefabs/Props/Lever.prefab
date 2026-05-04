@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LeverInteractable
   promptMessage: Pull Lever
-  requiredMoney: 500
+  requiredMoney: 50
   animator: {fileID: 0}
   trapdoorMovementDuration: 5
   animationCurve:

@@ -7,7 +7,8 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private string promptMessage = "Pull Lever";
 
-    [SerializeField] private int requiredMoney = 500; // can be changed in the inspector
+    [SerializeField] private int baseMoneyCost = 50;
+    [SerializeField] private int costIncreasePerCorridor = 25;
 
     [SerializeField] private Animator animator;
     [SerializeField] private float trapdoorMovementDuration = 5f;
@@ -23,7 +24,9 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (MoneyManager.Instance.SpendMoney(requiredMoney))
+        // 1. Calculate the current required money based on the generator's current length
+        int currentRequiredMoney = baseMoneyCost + (CorridorGenerator.Instance.corridorLength * costIncreasePerCorridor);
+        if (MoneyManager.Instance.SpendMoney(currentRequiredMoney))
         {
             setLayerMask("Default");
 
@@ -68,7 +71,8 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        return promptMessage;
+        int currentRequiredMoney = baseMoneyCost + (CorridorGenerator.Instance.corridorLength * costIncreasePerCorridor);
+        return "[Cost: " + currentRequiredMoney + "] "+ promptMessage;
     }
 
     public Transform GetTransform()
