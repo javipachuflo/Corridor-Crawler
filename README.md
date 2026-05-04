@@ -1,7 +1,7 @@
 # Corridor-Crawler
 A game about getting to the end of a corridor
 
-### So far we have:
+### So far we have...
  * A randomly generated corridor with rooms to the left and right
  * Character and camera movement
  * Custom-made objects which the player can interact with, including:
@@ -14,3 +14,9 @@ A game about getting to the end of a corridor
  * Ability to pause game anytime and return to Title Screen
  * Money System
  * SFX: check commits on: 2nd of May 2026.
+ * Money System (Gaining and losing money)
+ * UI SFX
+ * Player audio (moving and jumping)
+ * Custom UI
+ * Tutorial
+ * Music variety (for title screen and in-game)
